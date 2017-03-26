@@ -13,6 +13,9 @@
 # below. You must also write the driver code to test your classes.
 
 class SimpleCalculator
+  def self.inherited(subclass)
+    puts "New subclass: #{subclass}"
+  end
 
   def add(first_number, second_number)
     first_number + second_number
@@ -32,23 +35,7 @@ class SimpleCalculator
 
 end
 
-class FancyCalculator
-
-  def add(first_number, second_number)
-    first_number + second_number
-  end
-
-  def subtract(first_number, second_number)
-    first_number - second_number
-  end
-
-  def multiply(first_number, second_number)
-    first_number * second_number
-  end
-
-  def divide(first_number, second_number)
-    first_number / second_number
-  end
+class FancyCalculator<SimpleCalculator
 
   def square_root(number)
     Math.sqrt(number)
@@ -57,4 +44,15 @@ class FancyCalculator
 end
 
 # Write your own driver code below:
+fancycalc = FancyCalculator.new()
+puts "Add: "
+p fancycalc.add(4,5)
+puts "Subtract: "
+p fancycalc.subtract(8,5)
+puts "Multiply: "
+p fancycalc.multiply(8,5)
+puts "Divide: "
+p fancycalc.divide(45,5)
+puts "Square root: "
+p fancycalc.square_root(36)
 
